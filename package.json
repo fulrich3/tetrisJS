@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "webpack-cli": "^3.3.10",
-    "yarn": "^1.21.0"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
