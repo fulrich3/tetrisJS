@@ -57,7 +57,7 @@ export default class Playfield{
 					yInBounds = (currentY >= 0 && currentY < this.height);
 
 					if(xInBounds && yInBounds && tetromino.shape[y][x] != 0){
-						render[currentX][currentY] = tetromino.shapeIndex;
+						render[currentY][currentX] = tetromino.shapeIndex;
 					}
 				}
 			}

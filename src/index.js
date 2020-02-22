@@ -8,4 +8,3 @@ var htmlContainerElement = document.querySelector("#root");
 
 var game = new Game(htmlContainerElement);
 game.init();
-game.update();

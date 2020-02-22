@@ -45,8 +45,8 @@ export default class Tetromino{
 	}
 
 	setPos(x,y){
-		setX(x);
-		setY(y);
+		this.setX(x);
+		this.setY(y);
 	}
 
 	getShapeValue(x,y){
