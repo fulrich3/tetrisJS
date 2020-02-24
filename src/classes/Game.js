@@ -21,6 +21,7 @@ export default class Game {
         // Create tetromino
         this.playfield.setCurrentTetromino(this.tetromino);
         this.tetromino.setPos(5,2);
+        this.tetromino.init();
 
         // Initial draw
         this.draw();
@@ -45,13 +46,22 @@ export default class Game {
         switch(actionName){
             case "right":
                 this.tetromino.setX( this.tetromino.x + 1 );
-                this.draw();
             break;
             case "left":
                 this.tetromino.setX( this.tetromino.x - 1 );
-                this.draw();
+            break;
+            case "down":
+                this.tetromino.setY( this.tetromino.y + 1 );
+            break;
+            case "rotateClockWise":
+                this.tetromino.rotateClockWise();
+            break;
+            case "rotateCounterClockWise":
+                this.tetromino.rotateCounterClockWise();
             break;
         }
+
+        this.draw();
     }
     
     draw(){

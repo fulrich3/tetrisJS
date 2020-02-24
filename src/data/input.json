@@ -2,5 +2,6 @@
     "right": "ArrowRight",
     "left": "ArrowLeft",
     "down": "ArrowDown",
-    "rotate": "Space"
+    "rotateClockWise": "Space",
+    "rotateCounterClockWise": "KeyC"
 }

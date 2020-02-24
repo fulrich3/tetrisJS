@@ -1,7 +1,7 @@
 {
-  "name": "passe-temps",
+  "name": "tetrisReact",
   "version": "1.0.0",
-  "description": "Petit programme, fait quand je n'avais rien à faire...",
+  "description": "Tetris fait en ReactJS",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
