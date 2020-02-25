@@ -8,7 +8,8 @@ export default class Game {
         this.htmlContainer = htmlContainerElement;
         this.playfield = new Playfield();
         this.player = new Player( this );
-        this.tetromino = new Tetromino( Math.floor(Math.random() * 7) );
+        this.tetromino = new Tetromino( this, Math.floor(Math.random() * 7) );
+        // this.tetromino = new Tetromino( this, 1 );
 
         this.currentInterval = 1000;
     }
@@ -45,10 +46,10 @@ export default class Game {
     input(actionName){
         switch(actionName){
             case "right":
-                this.tetromino.setX( this.tetromino.x + 1 );
+                this.tetromino.moveRight();
             break;
             case "left":
-                this.tetromino.setX( this.tetromino.x - 1 );
+                this.tetromino.moveLeft();
             break;
             case "down":
                 this.tetromino.setY( this.tetromino.y + 1 );

@@ -7,7 +7,7 @@ export default class Player {
     }
 
     init(){
-        window.addEventListener("keydown",  (event) => {
+        window.addEventListener("keydown", (event) => {
             let actionName = null;
 
             for (const [currentActionName,currentActionEventCode] of Object.entries(INPUT)) {

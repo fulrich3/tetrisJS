@@ -53,6 +53,7 @@ export default class Playfield{
 					let currentX = tetromino.x - tetromino.center.x + x,
 					currentY = tetromino.y - tetromino.center.y + y;
 
+					// Check if teromino part is in bound of playfield
 					let xInBounds = (currentX >= 0 && currentX < this.width),
 					yInBounds = (currentY >= 0 && currentY < this.height);
 
@@ -64,7 +65,6 @@ export default class Playfield{
 		}
 
 		for(var y=0; y<this.height; y++){
-			
 			htmlString += "<div>"
 
 			for(var x=0; x<this.width; x++){

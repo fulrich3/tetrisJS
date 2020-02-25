@@ -1,7 +1,9 @@
 const DATA_TETROMINOS = require("../data/tetrominos.json");
 
 export default class Tetromino{
-	constructor(shapeIndex){
+	constructor(gameInstance, shapeIndex){
+		this.game = gameInstance;
+
 		this.shapeIndex = shapeIndex;
 
 		this.baseShape = DATA_TETROMINOS[this.shapeIndex].shape;
@@ -58,9 +60,8 @@ export default class Tetromino{
 		this.setY(y);
 	}
 
-	// Setter de la rotation du tetromino
-	setRotation(value){
-		value = value % 4;
+	setCenter(value){
+		this.center = value;
 	}
 
 	// Set new shape from an array
@@ -88,7 +89,25 @@ export default class Tetromino{
 			newShape.push(newRow);
 		}
 
+		let newCenter = {
+			x: this.center.y,
+			y: this.center.x
+		}
+
+		var overflowLeft = this.x - this.center.x;
+			
+		if(overflowLeft < 0){
+			this.setX( -overflowLeft );
+		}
+
+		var overflowRight = Math.abs(this.center.x - this.x);
+			
+		if(overflowRight > this.game.playfield.width){
+			this.setX( overflowLeft );
+		}
+
 		this.setShape(newShape);
+		this.setCenter(newCenter);
 	}
 
 	rotateCounterClockWise(){
@@ -106,13 +125,34 @@ export default class Tetromino{
 				let checkX = shapeWidth-1 - y,
 				checkY = x;
 
-
 				newRow.push( this.shape[checkY][checkX] );
 			}
 
 			newShape.push(newRow);
 		}
 
+		var overflowLeft = this.x - this.center.x;
+			
+		if(overflowLeft < 0){
+			this.setX( -overflowLeft );
+		}
+
+
 		this.setShape(newShape);
+		this.setCenter(newCenter);
+	}
+
+	// Move tetromino right
+	moveRight(){
+		if(this.x + (this.getWidth() - this.center.x) < this.game.playfield.width){
+			this.setX( this.x + 1 );
+		}
+	}
+
+	// Move tetromino left
+	moveLeft(){
+		if( this.x > 0 + Math.abs( (this.center.x - this.getWidth())) ){
+			this.setX( this.x - 1 );
+		}
 	}
 }
