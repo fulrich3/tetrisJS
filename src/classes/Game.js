@@ -8,8 +8,8 @@ export default class Game {
         this.htmlContainer = htmlContainerElement;
         this.playfield = new Playfield();
         this.player = new Player( this );
-        this.tetromino = new Tetromino( this, Math.floor(Math.random() * 7) );
-        // this.tetromino = new Tetromino( this, 1 );
+        // this.tetromino = new Tetromino( this, Math.floor(Math.random() * 7) );
+        this.tetromino = new Tetromino( this, 1 );
 
         this.currentInterval = 1000;
     }
@@ -57,9 +57,9 @@ export default class Game {
             case "rotateClockWise":
                 this.tetromino.rotateClockWise();
             break;
-            case "rotateCounterClockWise":
-                this.tetromino.rotateCounterClockWise();
-            break;
+            // case "rotateCounterClockWise":
+            //     this.tetromino.rotateCounterClockWise();
+            // break;
         }
 
         this.draw();

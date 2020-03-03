@@ -71,6 +71,8 @@ export default class Tetromino{
 
 	// Other
 	rotateClockWise(){
+		console.log("rotateClockWise");
+
 		var newShape = [];
 
 		let shapeWidth = this.getWidth();
@@ -89,27 +91,19 @@ export default class Tetromino{
 			newShape.push(newRow);
 		}
 
-		let newCenter = {
-			x: this.center.y,
-			y: this.center.x
-		}
-
-		var overflowLeft = this.x - this.center.x;
-			
-		if(overflowLeft < 0){
-			this.setX( -overflowLeft );
-		}
-
-		var overflowRight = Math.abs(this.center.x - this.x);
-			
-		if(overflowRight > this.game.playfield.width){
-			this.setX( overflowLeft );
-		}
 
 		this.setShape(newShape);
-		this.setCenter(newCenter);
+		// this.setCenter(newCenter);
+
+		// var overflowLeft = this.x - this.center.x;
+		// console.log(this.x, this.center.x);
+			
+		// if(overflowLeft < 0){
+		// 	this.setX( -overflowLeft );
+		// }
 	}
 
+	/*
 	rotateCounterClockWise(){
 		console.log("rotateCounterClockWise");
 
@@ -141,6 +135,7 @@ export default class Tetromino{
 		this.setShape(newShape);
 		this.setCenter(newCenter);
 	}
+	*/
 
 	// Move tetromino right
 	moveRight(){
@@ -151,7 +146,8 @@ export default class Tetromino{
 
 	// Move tetromino left
 	moveLeft(){
-		if( this.x > 0 + Math.abs( (this.center.x - this.getWidth())) ){
+		// if( this.x > 0 + Math.abs( (this.center.x - this.getWidth())) ){
+		if( this.x > 0 ){
 			this.setX( this.x - 1 );
 		}
 	}
