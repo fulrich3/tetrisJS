@@ -15,15 +15,61 @@ export default class Playfield{
 			var newRow = [];
 
 			for(var x=0; x<this.width; x++){
-				newRow.push(0);
+				newRow.push(null);
 			}
 
 			this.grid.push(newRow);
 		}
 	}
 
+	getWidth(){
+		return this.width;
+	}
+
+	getHeight(){
+		return this.height;
+	}
+
+	getGridValue(x,y){
+		return this.grid[y][x];
+	}
+
 	setCurrentTetromino(tetromino){
 		this.currentTetromino = tetromino;
+	}
+
+	setBlockValue(x,y,value){
+		this.grid[y][x] = value;
+	}
+
+	clearFilledRows(){
+		for(let y = 0 ; y<this.getHeight() ; y++){
+			// Start with clear variable set as true
+			let rowIsFilled = true;
+
+			for(let x = 0 ; x<this.getWidth() ; x++){
+				if( this.getGridValue(x,y) === null ){
+					rowIsFilled = false;
+				}
+			}
+
+			if(rowIsFilled){
+				this.grid.splice(y,1);
+
+				var newRow = [];
+		
+				for(var x=0; x<this.getWidth(); x++){
+					newRow.push(null);
+				}
+	
+				// Add new empty row on top of the grid
+				this.grid.unshift(newRow);
+			}
+		}
+
+
+
+		console.log( this.grid );
 	}
 
 	htmlRender(){
@@ -42,6 +88,16 @@ export default class Playfield{
 			render.push(newRow);
 		}
 
+		// Draw playfield's blocks
+		for(var y=0; y<this.height; y++){
+			for(var x=0; x<this.width; x++){
+				let currentPlayfieldBlockValue = this.grid[y][x];
+				
+				if(currentPlayfieldBlockValue !== null)
+					render[y][x] = currentPlayfieldBlockValue;
+			}
+		}
+
 		// Draw current tetromino if there is one
 		if(this.currentTetromino && this.currentTetromino.shape){
 			let tetromino = this.currentTetromino;
@@ -50,8 +106,8 @@ export default class Playfield{
 				let currentRow = this.currentTetromino.shape[y];
 
 				for(let x=0 ; x<currentRow.length ; x++){
-					let currentX = tetromino.x - tetromino.center.x + x,
-					currentY = tetromino.y - tetromino.center.y + y;
+					let currentX = tetromino.x + x,
+					currentY = tetromino.y  + y;
 
 					// Check if teromino part is in bound of playfield
 					let xInBounds = (currentX >= 0 && currentX < this.width),
