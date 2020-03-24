@@ -4,7 +4,11 @@ import "./style.css";
 // Import classes
 import Game from "./classes/Game";
 
-var htmlContainerElement = document.querySelector("#root");
+var htmlContainers = {
+    playfield: document.querySelector("#playfield"),
+    score: document.querySelector("#score"),
+    level: document.querySelector("#level"),
+}
 
-var game = new Game(htmlContainerElement);
+var game = new Game(htmlContainers);
 game.init();
