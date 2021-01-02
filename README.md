@@ -4,5 +4,5 @@ Playable at https://sad-easley-a39606.netlify.app/ !
 
 ## Controls
 
-* *Arrow keys*: Move tetramino
-* *Space*: Rotate tetramino
+* __Arrow keys__: Move tetramino
+* __Space__: Rotate tetramino
