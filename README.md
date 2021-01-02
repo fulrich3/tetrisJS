@@ -1,3 +1,8 @@
 # Tetris JS
 
-Build jouable sur https://sad-easley-a39606.netlify.app/
+Playable at https://sad-easley-a39606.netlify.app/ !
+
+## Controls
+
+* *Arrow keys*: Move tetramino
+* *Space*: Rotate tetramino
